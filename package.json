@@ -1,0 +1,35 @@
+{
+  "name": "node-express-react-flux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "node ./app/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billws/node-express-react-flux.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express",
+    "ReactJS",
+    "Flux"
+  ],
+  "author": "Bill Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/billws/node-express-react-flux/issues"
+  },
+  "homepage": "https://github.com/billws/node-express-react-flux#readme",
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "pug": "~2.0.0-beta11",
+    "serve-favicon": "~2.4.2"
+  }
+}
