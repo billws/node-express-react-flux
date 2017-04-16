@@ -40,7 +40,11 @@ router.post('/', function(req, res){
     if(typeof req.body.topicText === "undefined" || req.body.topicText === ""){
         res.json({message:"No Data."});    
     }else{
-        res.json(topicServices.create(req.body.topicText));
+        if(req.body.topicText.length < 256){
+            res.json(topicServices.create(req.body.topicText));
+        }else{
+            res.json({message: "text too long."});
+        }
     }
 });
 

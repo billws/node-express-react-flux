@@ -78,6 +78,7 @@ var topicServices = {
         cacheServices.update(topicKey, cacheServices.getTopicIndex(), topicText);
         voteServices.set(cacheServices.getTopicIndex(), 0, 0);
         cacheServices.addTopicIndex();
+        return 0;
     },
 
 /**
@@ -89,6 +90,7 @@ var topicServices = {
             content = topicText;
             cacheServices.update(topicKey, topicId, content);
         }
+        return 0;
     },
 
 /**
@@ -97,6 +99,7 @@ var topicServices = {
     remove: function(topicId){
         cacheServices.delete(topicKey, topicId);
         voteServices.remove(topicId);
+        return 0;
     }
 
 };

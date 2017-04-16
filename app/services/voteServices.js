@@ -40,6 +40,7 @@ var voteServices = {
  */
     set: function(topicId, upVoteNumber, downVoteNumber){
         cacheServices.update(voteKey, topicId, [upVoteNumber, downVoteNumber]);
+        return 0;
     },
 
 /**
@@ -50,6 +51,7 @@ var voteServices = {
         if(Array.isArray(content)){
             this.set(topicId, upVoteNumber, content[1]);
         }
+        return 0;
     },
 
 /**
@@ -60,6 +62,7 @@ var voteServices = {
         if(Array.isArray(content)){
             this.set(topicId, content[0], downVoteNumber);
         }
+        return 0;
     },
 
 /**
@@ -71,6 +74,7 @@ var voteServices = {
             content[0]++;
             cacheServices.update(voteKey, topicId, content);
         }
+        return 0;
     },
 
 /**
@@ -82,6 +86,7 @@ var voteServices = {
             content[1]++;
             cacheServices.update(voteKey, topicId, content);
         }
+        return 0;
     },
 
 /**
@@ -89,6 +94,7 @@ var voteServices = {
  */
     remove: function(topicId){
         cacheServices.delete(voteKey, topicId);
+        return 0;
     }
 
 };
