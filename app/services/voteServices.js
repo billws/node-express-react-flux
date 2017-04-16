@@ -2,7 +2,7 @@ var cacheServices = require('./cacheServices');
 
 const voteKey = "voteCache";
 /*
-
+Vote number format in cache.
 {
     topicId: [upVoteNumber, downVoteNumber]
 }
@@ -10,7 +10,9 @@ const voteKey = "voteCache";
 */
 
 var voteServices = {
-
+/**
+ * Get vote by topic id.
+ */
     get: function(topicId){
         let content = cacheServices.read(voteKey, topicId);
         if(Array.isArray(content)){
@@ -21,14 +23,28 @@ var voteServices = {
         }
     },
 
-    getTop20ByUpVoteDesc: function(){
-
+/**
+ * Get topics' id sorted by upvote descending.
+ */
+    getVotesByUpVoteDesc: function(){
+        let allVote = cacheServices.readAll(voteKey);
+        if(typeof allVote !== "object"){
+            allVote = {};
+        }
+        return Object.keys(allVote)
+            .sort((x,y) => allVote[y][0] - allVote[x][0]);
     },
 
+/**
+ * Modify upvote/downvote number by topic id.
+ */
     set: function(topicId, upVoteNumber, downVoteNumber){
         cacheServices.update(voteKey, topicId, [upVoteNumber, downVoteNumber]);
     },
 
+/**
+ * Modify upvote number by topic id.
+ */
     setUpVoteNumer: function(topicId, upVoteNumber){
         let content = cacheServices.read(voteKey, topicId);
         if(Array.isArray(content)){
@@ -36,6 +52,9 @@ var voteServices = {
         }
     },
 
+/**
+ * Modify downvote number by topic id.
+ */
     setDownVoteNumber: function(topicId, downVoteNumber){
         let content = cacheServices.read(voteKey, topicId);
         if(Array.isArray(content)){
@@ -43,26 +62,31 @@ var voteServices = {
         }
     },
 
+/**
+ * Add 1 to upvote number by topic id.
+ */
     upVote: function(topicId){
         let content = cacheServices.read(voteKey, topicId);
         if(Array.isArray(content)){
             content[0]++;
             cacheServices.update(voteKey, topicId, content);
-        }else{
-            this.set(topicId, 1, 0);
         }
     },
 
+/**
+ * Add 1 to downvote number by topic id.
+ */
     downVote: function(topicId){
         let content = cacheServices.read(voteKey, topicId);
         if(Array.isArray(content)){
             content[1]++;
             cacheServices.update(voteKey, topicId, content);
-        }else{
-            this.set(topicId, 0, 1);
         }
     },
 
+/**
+ * Remove vote number by topic id.
+ */
     remove: function(topicId){
         cacheServices.delete(voteKey, topicId);
     }

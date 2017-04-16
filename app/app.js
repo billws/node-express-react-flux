@@ -18,9 +18,9 @@ app.use(cookieParser());
 app.use('/res', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'views')));
 
-app.use('/topic', topic);
-app.use('/upvote', upvote);
-app.use('/downvote', downvote);
+app.use('/api/topic', topic);
+app.use('/api/upvote', upvote);
+app.use('/api/downvote', downvote);
 
 
 // catch 404 and forward to error handler
