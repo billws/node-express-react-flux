@@ -11,6 +11,7 @@ class TopicText extends React.Component {
         newText: ""
     };
   }
+
   render() {
     if(this.state.editMode){
         return (
@@ -69,5 +70,10 @@ class TopicText extends React.Component {
   }
 
 }
+
+  TopicText.propTypes = {
+    id: React.PropTypes.number.isRequired,
+    topicText: React.PropTypes.string.isRequired
+  };
 
 export default TopicText;

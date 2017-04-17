@@ -4,7 +4,6 @@ import TopicAction from '../../actions/topic/topicAction';
 import TopicStore from '../../stores/topic/topicStore';
 
 class AddTopic extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {

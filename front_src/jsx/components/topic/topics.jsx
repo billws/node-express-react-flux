@@ -38,10 +38,11 @@ class Topics extends React.Component {
             <TopicItem 
               key={topicKey} 
               id={topicKey} 
-              rank={i+1} 
+              rank={i+1}
               upvote={item[topicKey].vote[0]} 
               downvote={item[topicKey].vote[1]} 
-              topicText={item[topicKey].topic} />
+              topicText={item[topicKey].topic}
+              />
         )});
     return (
         <div className="divTable">
@@ -70,11 +71,11 @@ class Topics extends React.Component {
   }
 }
 
-
 class TopicItem extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
         <div className="divTableRow">
@@ -85,5 +86,14 @@ class TopicItem extends React.Component {
     );
   }
 }
+
+  TopicItem.propTypes = {
+    rank: React.PropTypes.number.isRequired,
+    id: React.PropTypes.number.isRequired,
+    upvote: React.PropTypes.number.isRequired,
+    downvote: React.PropTypes.number.isRequired,
+    topicText: React.PropTypes.string.isRequired
+  };
+
 
 export default Topics;

@@ -7,9 +7,13 @@ class TopicRank extends React.Component {
   }
   render() {
     return (
-        <div className="divTableCellFront" id={"rank"}>{this.props.rank}</div>
+        <div className="divTableCellFront">{this.props.rank}</div>
     );
   }
 }
+
+  TopicRank.propTypes = {
+    rank: React.PropTypes.number.isRequired
+  };
 
 export default TopicRank;

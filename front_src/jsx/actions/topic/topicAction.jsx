@@ -37,6 +37,9 @@ const Actions = {
             url: "/api/topic/",
             data: postData
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -59,6 +62,9 @@ const Actions = {
             url: "/api/topic/" + topicId,
             data: postData
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -79,6 +85,9 @@ const Actions = {
             method: 'DELETE',
             url: "/api/topic/" + topicId
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -99,6 +108,9 @@ const Actions = {
             method: 'PUT',
             url: "/api/upvote/topicid/" + topicId
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -119,6 +131,9 @@ const Actions = {
             method: 'PUT',
             url: "/api/downvote/topicid/" + topicId
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -140,6 +155,9 @@ const Actions = {
             url: "/api/upvote/",
             data: postData
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};
@@ -161,6 +179,9 @@ const Actions = {
             url: "/api/downvote/",
             data: postData
         }).then(function(data, textStatus, jqXHR) {
+            if(data.hasOwnProperty('message')){
+                alter(data.message);
+            }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
             var errorMessage = {};

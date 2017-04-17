@@ -13,6 +13,7 @@ class TopicVote extends React.Component {
         newDownVoteNumber: 0
     };
   }
+
   render() {
     return (
         <div className="divTableCellFront" id={this.props.id}>
@@ -135,5 +136,12 @@ class TopicVote extends React.Component {
     TopicAction.downVoteTopics(this.props.id);
   }
 }
+
+  TopicVote.propTypes = {
+    id: React.PropTypes.number.isRequired,
+    upvote: React.PropTypes.number.isRequired,
+    downvote: React.PropTypes.number.isRequired
+  };
+
 
 export default TopicVote;
