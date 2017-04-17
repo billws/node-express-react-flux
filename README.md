@@ -1,15 +1,15 @@
 # node-express-react-flux  
   
   
-##Build Steps:  
+## Build Steps:  
   
-###1. npm run build  
-###2. npm start  
-###3. open browser goto url http://localhost:3000/  
+### 1. npm run build  
+### 2. npm start  
+### 3. open browser goto url http://localhost:3000/  
   
   
   
-##Front-end key functions  
+## Front-end key functions  
   
 topicStore.jsx  
 ```JavaScript  
@@ -57,7 +57,7 @@ const Actions = {
   
   
   
-##Backend key function  
+## Backend key function  
   
 cacheServices.js  
 ```JavaScript  
