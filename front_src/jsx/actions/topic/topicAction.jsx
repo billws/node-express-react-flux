@@ -2,6 +2,9 @@ import TopicTypes from '../../constants/topicConstants';
 import Dispatcher from '../../dispatcher/dispatcher';
 
 const Actions = {
+  /**
+   * Get all topics from server.
+   */
   getTopics() {
         jQuery.ajax({
             method: 'GET',
@@ -23,6 +26,11 @@ const Actions = {
             });
         });
   },
+
+  /**
+   * Create new topic.
+   * @param {object} postData - Should contain attribute name topicText, ex: {topicText: "text"}.
+   */
   createTopics(postData) {
         jQuery.ajax({
             method: 'POST',
@@ -39,6 +47,12 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * Edit topic.
+   * @param {number} topicId
+   * @param {object} postData - Should contain attribute name topicText, ex: {topicText: "text"}.
+   */
   editTopics(topicId, postData) {
         jQuery.ajax({
             method: 'PUT',
@@ -55,6 +69,11 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * Delete topic.
+   * @param {number} topicId 
+   */
   deleteTopics(topicId) {
         jQuery.ajax({
             method: 'DELETE',
@@ -70,6 +89,11 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * upvote a topic.
+   * @param {number} topicId 
+   */
   upVoteTopics(topicId) {
         jQuery.ajax({
             method: 'PUT',
@@ -85,6 +109,11 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * Downvote a topic.
+   * @param {number} topicId 
+   */
   downVoteTopics(topicId) {
         jQuery.ajax({
             method: 'PUT',
@@ -100,6 +129,11 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * Edit upvote number.
+   * @param {object} postData - {topicId: 1, voteNumber: 50}
+   */
   editUpVote(postData) {
         jQuery.ajax({
             method: 'POST',
@@ -116,6 +150,11 @@ const Actions = {
             this.getTopics();
         }.bind(this));
   },
+
+  /**
+   * Edit downvote number.
+   * @param {object} postData -  {topicId: 1, voteNumber: 50}
+   */
   editDownVote(postData) {
         jQuery.ajax({
             method: 'POST',

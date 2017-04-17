@@ -26,11 +26,17 @@ var TopicStore = assign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
+/**
+ * Get response from action and store it.
+ */
   getResponse: function() {
     return totalTopics;
   }
 });
 
+/**
+ * Handle all actiontype for topictypes.
+ */
 TopicStore.dispatchToken = Dispatcher.register(function(action) {
   switch (action.type) {
     case TopicTypes.GET_TOPICS:

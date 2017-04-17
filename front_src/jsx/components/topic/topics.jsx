@@ -15,11 +15,17 @@ class Topics extends React.Component {
     };
   }
 
+  /**
+   * Bind event.
+   */
   componentDidMount() {
     TopicStore.addChangeListener(this._onChange.bind(this));
     TopicAction.getTopics();
   }
 
+  /**
+   * Unbind event.
+   */
   componentWillUnmount() {
     TopicStore.removeChangeListener(this._onChange.bind(this));
   }
@@ -29,7 +35,13 @@ class Topics extends React.Component {
     this.state.topics.map(function(item, i){
         let topicKey = Object.keys(item)[0];
         topicsDOM.push(
-            <TopicItem key={topicKey} id={topicKey} rank={i+1} upvote={item[topicKey].vote[0]} downvote={item[topicKey].vote[1]} topicText={item[topicKey].topic} />
+            <TopicItem 
+              key={topicKey} 
+              id={topicKey} 
+              rank={i+1} 
+              upvote={item[topicKey].vote[0]} 
+              downvote={item[topicKey].vote[1]} 
+              topicText={item[topicKey].topic} />
         )});
     return (
         <div className="divTable">
@@ -49,6 +61,9 @@ class Topics extends React.Component {
     );
   }
 
+  /**
+   * Reset state if data change.
+   */
   _onChange(){
     let response = TopicStore.getResponse();
     this.setState({topics: response});

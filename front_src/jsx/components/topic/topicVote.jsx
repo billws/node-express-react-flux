@@ -23,22 +23,39 @@ class TopicVote extends React.Component {
     );
   }
 
+  /**
+   * Enable edit upvote mode.
+   */
   editUpVoteMode() {
     this.setState({editUpMode: !this.state.editUpMode, newUpVoteNumber: this.props.upvote});
   }
 
+  /**
+   * Enable edit downvote mode.
+   */
   editDownVoteMode() {
     this.setState({editDownMode: !this.state.editDownMode, newDownVoteNumber: this.props.downvote});
   }
 
+  /**
+   * Handle input change.
+   * @param {event} event 
+   */
   handleUpChange(event) {
     this.setState({newUpVoteNumber: event.target.value});
   }
 
+  /**
+   * Handle input change.
+   * @param {event} event 
+   */
   handleDownChange(event) {
     this.setState({newDownVoteNumber: event.target.value});
   }
 
+  /**
+   * Display edit or display mode for upvote html dom structure.
+   */
   displayUpVoteMode() {
     if(this.state.editUpMode){
         return (
@@ -58,6 +75,9 @@ class TopicVote extends React.Component {
     }
   }
 
+  /**
+   * Display edit or display mode for downvote html dom structure.
+   */
   displayDownVoteMode() {
     if(this.state.editDownMode){
         return (
@@ -77,6 +97,9 @@ class TopicVote extends React.Component {
     }
   }
 
+  /**
+   * Check input format and call action.
+   */
   editUpVote() {
     if(parseInt(this.state.newUpVoteNumber, 10) !== 'NaN' && parseInt(this.state.newUpVoteNumber, 10) >= 0){
         TopicAction.editUpVote({topicId: this.props.id, voteNumber: this.state.newUpVoteNumber});
@@ -86,6 +109,9 @@ class TopicVote extends React.Component {
     }
   }
 
+  /**
+   * Check input format and call aciton.
+   */
   editDownVote() {
     if(parseInt(this.state.newDownVoteNumber, 10) !== 'NaN' && parseInt(this.state.newDownVoteNumber, 10) >= 0){
         TopicAction.editDownVote({topicId: this.props.id, voteNumber: this.state.newDownVoteNumber});
@@ -95,10 +121,16 @@ class TopicVote extends React.Component {
     }
   }
 
+  /**
+   * Upvote this topic.
+   */
   upVote() {
     TopicAction.upVoteTopics(this.props.id);
   }
 
+  /**
+   * Downvote this topic.
+   */
   downVote() {
     TopicAction.downVoteTopics(this.props.id);
   }

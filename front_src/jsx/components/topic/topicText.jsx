@@ -31,14 +31,24 @@ class TopicText extends React.Component {
     }
   }
 
+  /**
+   * Handle input change.
+   * @param {event} event 
+   */
   handleChange(event) {
     this.setState({newText: event.target.value});
   }
 
+  /**
+   * Enable edit mode.
+   */
   editText() {
     this.setState({editMode: !this.state.editMode, newText: this.props.topicText});
   }
 
+  /**
+   * Check input and call action.
+   */
   editTopic() {
     if(this.state.newText !== "" && this.state.newText.length < 256){
         TopicAction.editTopics(this.props.id, {topicText: this.state.newText});
@@ -48,6 +58,9 @@ class TopicText extends React.Component {
     }
   }
 
+  /**
+   * Delete topic.
+   */
   deleteTopic() {
       let confirmStatus = window.confirm("Are you sure?");
       if (confirmStatus == true) {

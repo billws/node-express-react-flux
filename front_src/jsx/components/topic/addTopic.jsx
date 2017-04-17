@@ -23,9 +23,17 @@ class AddTopic extends React.Component {
     );
   }
 
+  /**
+   * Handle input change.
+   * @param {event} event 
+   */
   handleChange(event) {
     this.setState({topicText: event.target.value});
   }
+
+  /**
+   * Check input string and call action.
+   */
   createTopic() {
     if(this.state.topicText !== "" && this.state.topicText.length < 256){
         TopicAction.createTopics({topicText: this.state.topicText});
@@ -34,7 +42,10 @@ class AddTopic extends React.Component {
         alert("Please input correct format.");
     }
   }
-   
+  
+  /**
+   * Clear input.
+   */
   cancelTopic() {
     this.setState({topicText: ""});
   }
