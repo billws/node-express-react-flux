@@ -94,6 +94,13 @@ var cacheServices = {
             return 0;
         }
     },
+
+/**
+ * Add 1 to topic index. Auto increase the topic index, as the key.
+ */
+    addTopicIndex: function(){
+        memCache[indexType][topicIndex]++;
+    },
 ...
 ...
 ...
