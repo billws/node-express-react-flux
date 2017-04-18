@@ -38,7 +38,7 @@ const Actions = {
             data: postData
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -63,7 +63,7 @@ const Actions = {
             data: postData
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -86,7 +86,7 @@ const Actions = {
             url: "/api/topic/" + topicId
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -106,10 +106,10 @@ const Actions = {
   upVoteTopics(topicId) {
         jQuery.ajax({
             method: 'PUT',
-            url: "/api/upvote/topicid/" + topicId
+            url: "/api/upvote/topicId/" + topicId
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -129,10 +129,10 @@ const Actions = {
   downVoteTopics(topicId) {
         jQuery.ajax({
             method: 'PUT',
-            url: "/api/downvote/topicid/" + topicId
+            url: "/api/downvote/topicId/" + topicId
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -156,7 +156,7 @@ const Actions = {
             data: postData
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {
@@ -180,7 +180,7 @@ const Actions = {
             data: postData
         }).then(function(data, textStatus, jqXHR) {
             if(data.hasOwnProperty('message')){
-                alter(data.message);
+                alert(data.message);
             }
             this.getTopics();
         }.bind(this), function(jqXHR, textStatus, errorThrown) {

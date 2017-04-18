@@ -18,7 +18,9 @@ var voteServices = {
         if(Array.isArray(content)){
             return content;
         }else{
-            this.set(topicId, 0, 0);
+            if(topicId < cacheServices.getTopicIndex()){
+                this.set(topicId, 0, 0);
+            }
             return [0, 0];
         }
     },

@@ -1,5 +1,6 @@
 var express = require('express');
 var topicServices = require('../services/topicServices');
+var tools = require('../tools/tools');
 var router = express.Router();
 
 /* Topic actions. */
@@ -16,8 +17,9 @@ router.get('/', function(req, res) {
  */
 router.get('/sorted/:count', function(req, res) {
     let count = 20;
-    if(req.params.count > 0 && req.params.count < 50){
-        count = req.params.count;
+
+    if(parseInt(req.params.count, 10) > 0 && parseInt(req.params.count, 10) < 50){
+        count = parseInt(req.params.count, 10);
     }
     res.json(topicServices.getTopicsSortedUpvote(count));
 });
@@ -26,7 +28,9 @@ router.get('/sorted/:count', function(req, res) {
  * Get topic by topic id.
  */
 router.get('/:topicId', function(req, res){
-    if(req.params.topicId < 0){
+    if(!tools.checkIsNumber(req.params.topicId) || 
+        parseInt(req.params.topicId, 10) < 0 || 
+        parseInt(req.params.topicId, 10) > Number.MAX_SAFE_INTEGER){
         res.json({message:"Topic ID is not correct."});    
     }else{
         res.json(topicServices.get(req.params.topicId));
@@ -52,8 +56,12 @@ router.post('/', function(req, res){
  * Modify topic by topic id.
  */
 router.put('/:topicId', function(req, res){
-    if(req.params.topicId < 0 || typeof req.body.topicText === "undefined" || req.body.topicText === ""){
-        res.json({message: "Require topic text."});
+    if(!tools.checkIsNumber(req.params.topicId) ||
+        parseInt(req.params.topicId) < 0 || 
+        parseInt(req.params.topicId) > Number.MAX_SAFE_INTEGER ||
+        typeof req.body.topicText === "undefined" || 
+        req.body.topicText === ""){
+        res.json({message: "Require topic text or topic id not correct."});
     }else{
         res.json(topicServices.set(req.params.topicId, req.body.topicText));
     }
@@ -63,7 +71,9 @@ router.put('/:topicId', function(req, res){
  * Delete topic by topic id.
  */
 router.delete('/:topicId', function(req, res){
-    if(req.params.topicId < 0){
+    if(!tools.checkIsNumber(req.params.topicId) || 
+        parseInt(req.params.topicId, 10) < 0 || 
+        parseInt(req.params.topicId, 10) > Number.MAX_SAFE_INTEGER){
         res.json({message:"Topic ID is not correct."});    
     }else{
         res.json(topicServices.remove(req.params.topicId));

@@ -102,7 +102,7 @@ class TopicVote extends React.Component {
    * Check input format and call action.
    */
   editUpVote() {
-    if(parseInt(this.state.newUpVoteNumber, 10) !== 'NaN' && parseInt(this.state.newUpVoteNumber, 10) >= 0){
+    if(this.checkIsNumber(this.state.newUpVoteNumber)){
         TopicAction.editUpVote({topicId: this.props.id, voteNumber: this.state.newUpVoteNumber});
         this.setState({editUpMode: !this.state.editUpMode});
     }else{
@@ -114,7 +114,7 @@ class TopicVote extends React.Component {
    * Check input format and call aciton.
    */
   editDownVote() {
-    if(parseInt(this.state.newDownVoteNumber, 10) !== 'NaN' && parseInt(this.state.newDownVoteNumber, 10) >= 0){
+    if(this.checkIsNumber(this.state.newDownVoteNumber)){
         TopicAction.editDownVote({topicId: this.props.id, voteNumber: this.state.newDownVoteNumber});
         this.setState({editDownMode: !this.state.editDownMode});
     }else{
@@ -134,6 +134,15 @@ class TopicVote extends React.Component {
    */
   downVote() {
     TopicAction.downVoteTopics(this.props.id);
+  }
+
+  /**
+   * Check input string is number or not.
+   * @param {string} input 
+   */
+  checkIsNumber (input){
+      let regexRule = new RegExp("^[0-9]+$");
+      return regexRule.test(input);
   }
 }
 
