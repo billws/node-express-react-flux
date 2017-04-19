@@ -33,7 +33,7 @@ router.post('/', function(req, res){
         parseInt(req.body.voteNumber, 10) > Number.MAX_SAFE_INTEGER) {
         res.json({message:"Input data is not correct."});
     }else{
-        res.json(voteServices.setDownVoteNumber(req.body.topicId, req.body.voteNumber));
+        res.json(voteServices.setDownVoteNumber(parseInt(req.body.topicId, 10), parseInt(req.body.voteNumber,10)));
     }
 });
 

@@ -58,6 +58,18 @@ var cacheServices = {
     },
 
 /**
+ * Update object value by type.
+ */
+    updateAll: function(type, value){
+        if(memCache[type]) {
+            memCache[type] = value;
+        } else {
+            this.create(type);
+            memCache[type] = value;
+        }
+    },
+
+/**
  * Update object value by type name, the key, and value.
  */
     update: function(type, key, value){

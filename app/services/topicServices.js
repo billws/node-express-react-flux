@@ -56,7 +56,7 @@ var topicServices = {
  */
     getTopicsSortedUpvote: function(count){
         let results = [];
-        let sortedTopicsId = voteServices.getVotesByUpVoteDesc();
+        let sortedTopicsId = voteServices.getTopTopics();
         if(typeof count === "undefined" || typeof count !== "number"){
             count = 20;
         }
